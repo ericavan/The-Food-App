@@ -44,21 +44,25 @@ router.get('/yelp_test', function(req, res, next) {
     .then(function (response) {
       //console.log("RESPONSE:", response)
       console.log("DATA:", response.data)
-      //console.log(response.data.businesses)
+      //console.log(response.data.location)
       //console.log(response.data.total)
       //console.log(response.data.region)
       // todo: flash and render page and pass data to page
-      res.render('hello', {message:"HELLO"}) // todo: use a different page!
+      //res.render('hello', {message:"HELLO"}) // todo: use a different page!
+      var name = req.query.name || "Traveler"
+      var message = "Hello, " + name
+      res.render('food', { message: message });
     })
     .catch(function (error) {
       console.log("ERR:", error)
       // todo: flash error message and redirect
-      res.render('hello', {message:"HELLO"}) // todo: use a different page!
+      res.render('food', {message:"Error Caught"}) // todo: use a different page!
     })
     .then(function () {
       console.log("DONE...")
     })
 });
+
 
 
 

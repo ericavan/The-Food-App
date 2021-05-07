@@ -1,3 +1,4 @@
+
 <h2>FOOD Dashboard (<%= symbol %>)</h2>
 
 <p class="lead">Latest Close: $<%= latestClose %> </p>
@@ -7,19 +8,15 @@
 
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script type="text/javascript">
-
     console.log("FOOD DASHBOARD...")
-
     // use data from the router!
     var symbol = '<%- symbol %>'
     var stockData = JSON.parse('<%- data %>')
     console.log(stockData)
-
     var tsd = stockData["Time Series (Daily)"]
     var dates = Object.keys(tsd)
     var dailyPrices = Object.values(tsd)
     var closingPrices = dailyPrices.map(obj => obj["5. adjusted close"])
-
     // see: https://plotly.com/javascript/line-charts/
     var series = {
         x: dates,
@@ -32,5 +29,4 @@
         height: 600
     }
     Plotly.newPlot("chart-container", data, layout, {responsive: true})
-
 </script>
