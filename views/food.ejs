@@ -75,7 +75,15 @@
         </form>
 
         <div>
-            <h2>Displaying results: <span id="my-restaurant-results">TODO</span></h2>
+          <h2>Displaying recommended restaurants in <span id="my-restaurant-criteria">TODO</span>
+          
+          </h2>
+        </div>
+
+        <div>
+          <h3>Top 5 Recommended Restaurants:  <span id="restaurant-list">TODO</span>
+          
+          </h3>
         </div>
 
     <script type="text/javascript">
@@ -84,7 +92,8 @@
         var submitButton = document.getElementById("my-button")
         var locationInput = document.getElementById("locationDataList")
         var priceInput = document.getElementById("my-select")
-        
+        var restaurantCriteriaDisplay = document.getElementById("my-restaurant-criteria")
+        var restaurantListDisplay = document.getElementById("restaurant-list")
 
         function handleSubmit() {
             event.preventDefault()
@@ -93,9 +102,13 @@
             console.log("LOCATION: ", locationInput.value)
             console.log("PRICE: ", priceInput.value)
             
+            restaurantCriteriaDisplay.innerText=locationInput.value + " with price of " + priceInput.value
+            //restaurantListDisplay.innerText=response.data.businesses[0].name
         }
 
         submitButton.addEventListener("click", handleSubmit)
     </script>
+
+
 
         

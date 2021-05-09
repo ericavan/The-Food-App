@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var fetch = require('node-fetch');
 const axios = require('axios').default; // first need to run: "npm install axios --save" from the command-line
+var restaurant1 = "TODO"
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -44,6 +46,8 @@ router.get('/yelp_test', function(req, res, next) {
     .then(function (response) {
       //console.log("RESPONSE:", response)
       console.log("DATA:", response.data)
+      console.log("DATA TOTAL:", response.data.total)
+      console.log("First Data Point Name: ", response.data.businesses[0].name)
       //console.log(response.data.location)
       //console.log(response.data.total)
       //console.log(response.data.region)
@@ -51,6 +55,7 @@ router.get('/yelp_test', function(req, res, next) {
       //res.render('hello', {message:"HELLO"}) // todo: use a different page!
       var name = req.query.name || "Traveler"
       var message = "Hello, " + name
+      restaurant1 = response.data.businesses[0].name
       res.render('food', { message: message });
     })
     .catch(function (error) {
