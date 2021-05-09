@@ -8,8 +8,8 @@
             <h3>Food Form</h3>
 
 
-            <label for="exampleDataList" class="form-label">Where would you like food recommendations?</label>
-            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+            <label for="locationDataList" class="form-label">Where would you like food recommendations?</label>
+            <input class="form-control" list="datalistOptions" id="locationDataList" placeholder="Type to search...">
             <datalist id="datalistOptions">
             <option value="San Francisco">
             <option value="New York">
@@ -72,7 +72,30 @@
             </div>
     
             <button type="submit" class="btn btn-primary" id="my-button">Submit</button>
-          </form>
+        </form>
 
+        <div>
+            <h2>Displaying results: <span id="my-restaurant-results">TODO</span></h2>
+        </div>
 
+    <script type="text/javascript">
+        
+        console.log("Erica thanks you for the page visit")
+        var submitButton = document.getElementById("my-button")
+        var locationInput = document.getElementById("locationDataList")
+        var priceInput = document.getElementById("my-select")
+        
 
+        function handleSubmit() {
+            event.preventDefault()
+            console.log("---------------------")
+            console.log("YOU CLICKED ME!")
+            console.log("LOCATION: ", locationInput.value)
+            console.log("PRICE: ", priceInput.value)
+            
+        }
+
+        submitButton.addEventListener("click", handleSubmit)
+    </script>
+
+        
