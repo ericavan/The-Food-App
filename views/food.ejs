@@ -1,2 +1,78 @@
 <h1><%= message %></h1>
 <p>This is the FOOD VIEWING page... </p>
+
+    <div>
+        
+
+        <form class="mx-auto" style="max-width: 350px; margin-top:2em;">
+            <h3>Food Form</h3>
+
+
+            <label for="exampleDataList" class="form-label">Where would you like food recommendations?</label>
+            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+            <datalist id="datalistOptions">
+            <option value="San Francisco">
+            <option value="New York">
+            <option value="Seattle">
+            <option value="Los Angeles">
+            <option value="Chicago">
+            <option value="Washington DC">
+            <option value="Boston">
+            <option value="Detroit">
+            <option value="No preference, I'll travel TO the best food">
+            </datalist>     
+    
+            <!--
+            <div class="mb-3">
+              <label for="my-number" class="form-label">Lucky Number:</label>
+              <input type="number" class="form-control" id="my-number" placeholder="$$">
+            </div>
+            
+    
+    
+    
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="my-preference">
+              <label class="form-check-label" for="my-preference">Opt out of advertising</label>
+            </div>
+    
+    
+    
+            <div class="mb-3 form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="my-switch" checked>
+              <label class="form-check-label" for="my-switch">Opt out switch</label>
+            </div>
+    
+
+            <div id="my-radios-container">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="my-radio-preference" id="my-radio-a" value="A">
+                <label class="form-check-label" for="my-radio-a">
+                  Option A
+                </label>
+              </div>
+              <div class="mb-3 form-check">
+                <input class="form-check-input" type="radio" name="my-radio-preference" id="my-radio-b" value="B" checked>
+                <label class="form-check-label" for="my-radio-b">
+                  Option B
+                </label>
+              </div>
+            </div>
+            -->
+    
+    
+            <div class="mb-3">
+               <label class="form-check-label" for="my-select">Select your price range from the dropdown:</label>
+               <select class="form-select" id="my-select" aria-label="Default select example">
+                <option value="1" >$</option>
+                <option value="2" selected>$$</option>
+                <option value="3">$$$</option>
+                <option value="4">$$$$</option>
+              </select>
+            </div>
+    
+            <button type="submit" class="btn btn-primary" id="my-button">Submit</button>
+          </form>
+
+
+
