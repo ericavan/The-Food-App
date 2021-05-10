@@ -1,42 +1,53 @@
-//var fetch = require('node-fetch');
-//var express = require('express');
-//var router = express.Router();
+/*var express = require('express');
+var router = express.Router();
+var fetch = require('node-fetch');
+const axios = require('axios').default;*/
 
 
-
-//const API_KEY = process.env.ALPHAVANTAGE_API_KEY || "abc123" // obtain your own api key and set via environment variable
-
-
-
-
-
-//router.get('/form', function(req, res, next) {
-//  res.render("food_form");
-//});
-
-//router.post('/dashboard', function(req, res, next) {
-//  console.log("FORM DATA", req.body)
-//  var symbol = req.body.symbol || "OOPS"
-//  console.log("STOCK SYMBOL", symbol)
-
-//  var requestUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${symbol}&apikey=${API_KEY}` // using string interpolation here, but you could alternatively do concatenation with + operators
-//  console.log("REQUEST URL", requestUrl)
-
-//  fetch(requestUrl)
-//    .then(function(response) {
-//        return response.json()
-//    })
-//    .then(function(data){
-//        console.log("STOCK DATA SUCCESS", Object.keys(data))
-//        var latestClose = Object.values(data["Time Series (Daily)"])[0]["5. adjusted close"]
-        //req.flash("success", "Stock Data Request Success!")
-//        res.render("food_dashboard", {symbol: symbol, data: JSON.stringify(data), latestClose: latestClose});
-//      })
-//    .catch(function(err){
-//      console.log("STOCK DATA ERROR:", err)
-//      //req.flash("danger", "OOPS, Please check your inputs and try again.")
-//      res.redirect("/food/form")
-//    })
-//});
-
-//module.exports = router;
+/* GET Yelp Test = stocks form page. */
+/*router.get('/yelp_test', function(req, res, next) {
+        var API_KEY = process.env.YELP_API_KEY || "4tOGmvhaVhwWA8BkRHAexxQza0EGS_5ZmIHEjcES2JqPnNO5goFUUHwXS1baEz_nzcvTya-jQJce4hMMpxWAa8PKA3PfWjxlso2tHUGRr-Lr-cBUo3VXdw7yJ1qVYHYx" // TODO: use env vars instead of hard-coding
+        // https://www.yelp.com/developers/documentation/v3/business_search
+        var requestUrl = "https://api.yelp.com/v3/businesses/search"
+        console.log("REQUEST URL:", requestUrl)
+        // https://github.com/axios/axios
+        var requestOptions = {
+            headers: {
+                Authorization: `Bearer ${API_KEY}`,
+            },
+            params: {
+              location: "Washington, DC", // todo use form data
+              price: 3 // todo use form data
+            }
+        }
+        console.log("REQUEST OPTIONS:", requestOptions)
+        axios.get(requestUrl, requestOptions)
+          .then(function (response) {
+            //console.log("RESPONSE:", response)
+            console.log("DATA:", response.data)
+            console.log("DATA TOTAL:", response.data.total)
+            console.log("First Data Point Name: ", response.data.businesses[0].name)
+            //console.log(response.data.location)
+            //console.log(response.data.total)
+            //console.log(response.data.region)
+            // todo: flash and render page and pass data to page
+            //res.render('hello', {message:"HELLO"}) // todo: use a different page!
+            //var name = req.query.name || "Traveler"
+            //var message = "Hello, " + name
+            var message = response.data.businesses[0].name + 
+            res.render('food', { message: message });
+            //res.render('hello', {restaurant1: restaurant1});
+          })
+          .catch(function (error) {
+            console.log("ERR:", error)
+            // todo: flash error message and redirect
+            res.render('food', {message:"Error Caught"}) // todo: use a different page!
+          })
+          .then(function () {
+            console.log("DONE...")
+          })
+      });
+      
+      
+      
+      module.exports = router;*/

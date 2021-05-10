@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var fetch = require('node-fetch');
 const axios = require('axios').default; // first need to run: "npm install axios --save" from the command-line
-var restaurant1 = "TODO"
+
 
 
 /* GET home page. */
@@ -23,10 +23,14 @@ router.get('/hello', function(req, res, next) {
   res.render('hello', { message: message });
 });
 
+router.get('/food', function(req, res, next) {
+  var message =  "Cuisine Form"
+  res.render('food', { message: message });
 
+});
 
-/* GET Yelp Test page. */
-router.get('/yelp_test', function(req, res, next) {
+/* GET API Data after gathering form criteria */
+router.get('/food_results', function(req, res, next) {
   var API_KEY = process.env.YELP_API_KEY || "4tOGmvhaVhwWA8BkRHAexxQza0EGS_5ZmIHEjcES2JqPnNO5goFUUHwXS1baEz_nzcvTya-jQJce4hMMpxWAa8PKA3PfWjxlso2tHUGRr-Lr-cBUo3VXdw7yJ1qVYHYx" // TODO: use env vars instead of hard-coding
   // https://www.yelp.com/developers/documentation/v3/business_search
   var requestUrl = "https://api.yelp.com/v3/businesses/search"
@@ -48,29 +52,33 @@ router.get('/yelp_test', function(req, res, next) {
       console.log("DATA:", response.data)
       console.log("DATA TOTAL:", response.data.total)
       console.log("First Data Point Name: ", response.data.businesses[0].name)
-      //console.log(response.data.location)
-      //console.log(response.data.total)
-      //console.log(response.data.region)
+
       // todo: flash and render page and pass data to page
       //res.render('hello', {message:"HELLO"}) // todo: use a different page!
-      var name = req.query.name || "Traveler"
-      var message = "Hello, " + name
-      restaurant1 = response.data.businesses[0].name
-      res.render('food', { message: message });
+
+      var firstResult = response.data.businesses[0].name
+      var secondResult = response.data.businesses[1].name
+      var thirdResult = response.data.businesses[2].name
+      var fourthResult = response.data.businesses[3].name
+      var fifthResult = response.data.businesses[4].name
+      res.render('food_results', { firstResult: firstResult, secondResult: secondResult, thirdResult: thirdResult, fourthResult: fourthResult, fifthResult: fifthResult });
+      //res.render('hello', {restaurant1: restaurant1});
     })
     .catch(function (error) {
       console.log("ERR:", error)
       // todo: flash error message and redirect
-      res.render('food', {message:"Error Caught"}) // todo: use a different page!
+      res.redirect("/stocks/form")
+      //res.render('food_results', {message:"Error Caught"}) // todo: use a different page!
     })
     .then(function () {
       console.log("DONE...")
     })
 });
 
+//router.post('/dashboard', function(req, res, next) {
 
 
-
+//});
 
 
 module.exports = router;

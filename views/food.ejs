@@ -1,11 +1,10 @@
 <h1><%= message %></h1>
-<p>This is the FOOD VIEWING page... </p>
 
     <div>
         
 
         <form class="mx-auto" style="max-width: 350px; margin-top:2em;">
-            <h3>Food Form</h3>
+            <h3>Food Preferences</h3>
 
 
             <label for="locationDataList" class="form-label">Where would you like food recommendations?</label>
@@ -74,17 +73,7 @@
             <button type="submit" class="btn btn-primary" id="my-button">Submit</button>
         </form>
 
-        <div>
-          <h2>Displaying recommended restaurants in <span id="my-restaurant-criteria">TODO</span>
-          
-          </h2>
-        </div>
 
-        <div>
-          <h3>Top 5 Recommended Restaurants:  <span id="restaurant-list">TODO</span>
-          
-          </h3>
-        </div>
 
     <script type="text/javascript">
         
@@ -107,8 +96,15 @@
         }
 
         submitButton.addEventListener("click", handleSubmit)
+
     </script>
 
+<!--<div>-->
+  <!--<h3>Top 5 Recommended Restaurants:  <span id="restaurant-list">TODO</span>-->
+ <!-- <h3>Top 5 Recommended Restaurants:</h3>
+    <p><%= message %></p>
+  
+</div>>-->
 
 
         
