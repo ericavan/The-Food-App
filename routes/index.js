@@ -30,8 +30,11 @@ router.get('/food', function(req, res, next) {
 });
 
 /* GET API Data after gathering form criteria */
-router.get('/food_results', function(req, res, next) {
-  var API_KEY = process.env.YELP_API_KEY || "4tOGmvhaVhwWA8BkRHAexxQza0EGS_5ZmIHEjcES2JqPnNO5goFUUHwXS1baEz_nzcvTya-jQJce4hMMpxWAa8PKA3PfWjxlso2tHUGRr-Lr-cBUo3VXdw7yJ1qVYHYx" // TODO: use env vars instead of hard-coding
+router.post('/food_results', function(req, res, next) {
+  console.log("WHAT IS THIS DATA", req.body)
+  //var formlocation = req.body.locationInput || "OOPS"
+  //console.log("IS THIS DATA LOCATION?", formlocation)
+  var API_KEY = process.env.YELP_API_KEY
   // https://www.yelp.com/developers/documentation/v3/business_search
   var requestUrl = "https://api.yelp.com/v3/businesses/search"
   console.log("REQUEST URL:", requestUrl)
@@ -56,18 +59,19 @@ router.get('/food_results', function(req, res, next) {
       // todo: flash and render page and pass data to page
       //res.render('hello', {message:"HELLO"}) // todo: use a different page!
 
-      var firstResult = response.data.businesses[0].name
-      var secondResult = response.data.businesses[1].name
-      var thirdResult = response.data.businesses[2].name
-      var fourthResult = response.data.businesses[3].name
-      var fifthResult = response.data.businesses[4].name
-      res.render('food_results', { firstResult: firstResult, secondResult: secondResult, thirdResult: thirdResult, fourthResult: fourthResult, fifthResult: fifthResult });
-      //res.render('hello', {restaurant1: restaurant1});
+      //var firstResult = response.data.businesses[0].name
+      //var secondResult = response.data.businesses[1].name
+      //var thirdResult = response.data.businesses[2].name
+      //var fourthResult = response.data.businesses[3].name
+      //var fifthResult = response.data.businesses[4].name
+      //res.render('food_results', { firstResult: firstResult, secondResult: secondResult, thirdResult: thirdResult, fourthResult: fourthResult, fifthResult: fifthResult });
+      var message = "Food Results"
+      res.render('food_results', { message: message, businesses: response.data.businesses})
     })
     .catch(function (error) {
       console.log("ERR:", error)
       // todo: flash error message and redirect
-      res.redirect("/stocks/form")
+      res.redirect("/food")
       //res.render('food_results', {message:"Error Caught"}) // todo: use a different page!
     })
     .then(function () {

@@ -6,7 +6,7 @@ const axios = require('axios').default;*/
 
 /* GET Yelp Test = stocks form page. */
 /*router.get('/yelp_test', function(req, res, next) {
-        var API_KEY = process.env.YELP_API_KEY || "4tOGmvhaVhwWA8BkRHAexxQza0EGS_5ZmIHEjcES2JqPnNO5goFUUHwXS1baEz_nzcvTya-jQJce4hMMpxWAa8PKA3PfWjxlso2tHUGRr-Lr-cBUo3VXdw7yJ1qVYHYx" // TODO: use env vars instead of hard-coding
+        var API_KEY = process.env.YELP_API_KEY
         // https://www.yelp.com/developers/documentation/v3/business_search
         var requestUrl = "https://api.yelp.com/v3/businesses/search"
         console.log("REQUEST URL:", requestUrl)

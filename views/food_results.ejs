@@ -3,9 +3,14 @@
 <div>
     <!--<h3>Top 5 Recommended Restaurants:  <span id="restaurant-list">TODO</span>-->
     <h3>Top 5 Recommended Restaurants:</h3>
-      <p><%= firstResult %></p>
-      <p><%= secondResult %></p>
-      <p><%= thirdResult %></p>
-      <p><%= fourthResult %></p>
-      <p><%= fifthResult %></p>
+
+    <ul>
+      <% businesses.forEach(function(business){ %>
+          <li><%= business['name'] %></li>
+      <% }) %>
+    </ul>
+
+
+
+
   </div>
