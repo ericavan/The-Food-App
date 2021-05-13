@@ -24,16 +24,20 @@ router.get('/hello', function(req, res, next) {
 });
 
 router.get('/food', function(req, res, next) {
-  var message =  "Cuisine Form"
+  var message =  "Per Diem Food Questionnaire"
   res.render('food', { message: message });
-
+  
 });
 
 /* GET API Data after gathering form criteria */
 router.post('/food_results', function(req, res, next) {
-  console.log("WHAT IS THIS DATA", req.body)
-  //var formlocation = req.body.locationInput || "OOPS"
-  //console.log("IS THIS DATA LOCATION?", formlocation)
+  console.log("WHAT IS THE PASSED DATA", req.body)
+  var formlocation = req.body.locationinput
+  console.log("WHAT IS THE LOCATION", formlocation)
+  var formprice = req.body.priceinput
+  console.log("WHAT IS THE PRICE", formprice)
+
+
   var API_KEY = process.env.YELP_API_KEY
   // https://www.yelp.com/developers/documentation/v3/business_search
   var requestUrl = "https://api.yelp.com/v3/businesses/search"
@@ -44,8 +48,8 @@ router.post('/food_results', function(req, res, next) {
           Authorization: `Bearer ${API_KEY}`,
       },
       params: {
-        location: "Washington, DC", // todo use form data
-        price: 3 // todo use form data
+        location: formlocation, // todo use form data
+        price: formprice // todo use form data
       }
   }
   console.log("REQUEST OPTIONS:", requestOptions)

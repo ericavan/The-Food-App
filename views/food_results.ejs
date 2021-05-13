@@ -2,15 +2,24 @@
 
 <div>
     <!--<h3>Top 5 Recommended Restaurants:  <span id="restaurant-list">TODO</span>-->
-    <h3>Top 5 Recommended Restaurants:</h3>
+    <h3>Top Recommended Restaurants:</h3>
 
     <ul>
       <% businesses.forEach(function(business){ %>
-          <li><%= business['name'] %></li>
+          <li><a href=<%= business['url'] %>><%= business['name'] %></a>
+
+            <ol style="list-style-type: lower-alpha; padding-bottom: 0;">
+              <li style="margin-left:2em">Distance from searched location: <%= business['distance'] %> meters</li>
+              <li style="margin-left:2em; padding-bottom: 0;">Restaurant Rating: <%= business['rating'] %> stars</li>
+            </ol>
+              
+          </li>
+          
+          
       <% }) %>
     </ul>
 
-
+    <li><a href="#">Link 1</a></li>
 
 
   </div>

@@ -8,24 +8,26 @@
 
 
             <label for="locationDataList" class="form-label">Where would you like food recommendations?</label>
-            <input class="form-control" list="datalistOptions" id="locationDataList" placeholder="Type to search...">
+            <input class="form-control" name="locationinput" list="datalistOptions" id="locationDataList" placeholder="Type to search...">
             <datalist id="datalistOptions">
             <option value="San Francisco">
             <option value="New York">
             <option value="Seattle">
             <option value="Los Angeles">
             <option value="Chicago">
-            <option value="Washington DC">
+            <option value="Washington, DC">
             <option value="Boston">
             <option value="Detroit">
-            <option value="No preference, I'll travel TO the best food">
+            <option value="Dallas">
+            <option value="Houston">
+            <option value="Atlanta">
             </datalist>     
     
     
     
             <div class="mb-3">
                <label class="form-check-label" for="my-select">Select your price range from the dropdown:</label>
-               <select class="form-select" id="my-select" aria-label="Default select example">
+               <select class="form-select" id="my-select" name="priceinput" aria-label="Default select example">
                 <option value="1" >$</option>
                 <option value="2" selected>$$</option>
                 <option value="3">$$$</option>
@@ -35,12 +37,15 @@
     
             <button type="submit" class="btn btn-primary" id="my-button">Submit</button>
         </form>
-
-
+        
+        <br>
+        <p>Do you not see a city you travel to often?
+            <a href="mailto:erica.vandorn@gmail.com">Send us an email</a>
+        </p>
 
     <script type="text/javascript">
         
-        console.log("Erica thanks you for the page visit")
+      //  console.log("Erica thanks you for the page visit")
         var submitButton = document.getElementById("my-button")
         var locationInput = document.getElementById("locationDataList")
         var priceInput = document.getElementById("my-select")
