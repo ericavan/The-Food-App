@@ -9,7 +9,7 @@
           <li><a href=<%= business['url'] %>><%= business['name'] %></a>
 
             <ol style="list-style-type: lower-alpha; padding-bottom: 0;">
-              <li style="margin-left:2em">Distance from searched location: <%= business['distance'] %> meters</li>
+              <li style="margin-left:2em">Distance from searched location: <%= Math.round(business['distance']) %> meters</li>
               <li style="margin-left:2em; padding-bottom: 0;">Restaurant Rating: <%= business['rating'] %> stars</li>
             </ol>
               

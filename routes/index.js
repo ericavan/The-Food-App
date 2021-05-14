@@ -7,7 +7,7 @@ const axios = require('axios').default; // first need to run: "npm install axios
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'The Food App' });
+  res.render('index', { title: 'GetGrub' });
 });
 
 /* GET about page. */
@@ -31,11 +31,11 @@ router.get('/food', function(req, res, next) {
 
 /* GET API Data after gathering form criteria */
 router.post('/food_results', function(req, res, next) {
-  console.log("WHAT IS THE PASSED DATA", req.body)
+  console.log("PASSED DATA: ", req.body)
   var formlocation = req.body.locationinput
-  console.log("WHAT IS THE LOCATION", formlocation)
+  console.log("LOCATION: ", formlocation)
   var formprice = req.body.priceinput
-  console.log("WHAT IS THE PRICE", formprice)
+  console.log("PRICE: ", formprice)
 
 
   var API_KEY = process.env.YELP_API_KEY
@@ -48,8 +48,8 @@ router.post('/food_results', function(req, res, next) {
           Authorization: `Bearer ${API_KEY}`,
       },
       params: {
-        location: formlocation, // todo use form data
-        price: formprice // todo use form data
+        location: formlocation,
+        price: formprice
       }
   }
   console.log("REQUEST OPTIONS:", requestOptions)
@@ -58,23 +58,17 @@ router.post('/food_results', function(req, res, next) {
       //console.log("RESPONSE:", response)
       console.log("DATA:", response.data)
       console.log("DATA TOTAL:", response.data.total)
-      console.log("First Data Point Name: ", response.data.businesses[0].name)
+      //console.log("First Data Point Name: ", response.data.businesses[0].name)
 
       // todo: flash and render page and pass data to page
-      //res.render('hello', {message:"HELLO"}) // todo: use a different page!
-
-      //var firstResult = response.data.businesses[0].name
-      //var secondResult = response.data.businesses[1].name
-      //var thirdResult = response.data.businesses[2].name
-      //var fourthResult = response.data.businesses[3].name
-      //var fifthResult = response.data.businesses[4].name
-      //res.render('food_results', { firstResult: firstResult, secondResult: secondResult, thirdResult: thirdResult, fourthResult: fourthResult, fifthResult: fifthResult });
-      var message = "Food Results"
+      req.flash("success", "GetGrub Data Request Success!")
+       var message = "Food Results"
       res.render('food_results', { message: message, businesses: response.data.businesses})
     })
     .catch(function (error) {
       console.log("ERR:", error)
       // todo: flash error message and redirect
+      req.flash("danger", "OOPS, Please check your inputs and try again.")
       res.redirect("/food")
       //res.render('food_results', {message:"Error Caught"}) // todo: use a different page!
     })
@@ -83,10 +77,6 @@ router.post('/food_results', function(req, res, next) {
     })
 });
 
-//router.post('/dashboard', function(req, res, next) {
-
-
-//});
 
 
 module.exports = router;
